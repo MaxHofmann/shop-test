@@ -8,9 +8,9 @@ function AddProduct() {
   return (
     <div className="container">
       <Link to="/">
-        <Button classButton={"button"} value={'Назад'} />
+        <Button classButton={'button'} value={'Назад'} />
       </Link>
-        <FormCart func={actions.createCart} textForm={"Форма добавления товара"}/>
+      <FormCart func={actions.createCart} textForm={'Форма добавления товара'} />
     </div>
   );
 }

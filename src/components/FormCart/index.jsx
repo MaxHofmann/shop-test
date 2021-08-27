@@ -30,12 +30,12 @@ function FormCart({func, textForm}) {
   const [formValid, setFormValid] = useState(false)
 
   useEffect(() => {
-    if (nameError || priceError || endOfDiscountError || fileError) {
+    if (nameError || priceError || fileError) {
       setFormValid(false)
     } else {
       setFormValid(true)
     }
-  }, [nameError, priceError, endOfDiscountError, fileError])
+  }, [nameError, priceError, fileError])
 
   const fileHandler = (e) => {
     let imgFile =  e.target.files[0]

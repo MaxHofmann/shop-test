@@ -3,8 +3,8 @@ import useStore from '../../hooks/store';
 import { Button } from '../../components';
 import { Link } from 'react-router-dom';
 import { format, isBefore, differenceInBusinessDays } from 'date-fns';
-const date = new Date()
-const dateFormatted = format(date, "yyyy-MM-dd")
+const date = new Date();
+const dateFormatted = format(date, 'yyyy-MM-dd');
 
 function Home() {
   const { state, actions } = useStore();
@@ -30,7 +30,7 @@ function Home() {
   return (
     <div className="container">
       <Link to="add">
-        <Button classButton={"button"} value={'add product'} />
+        <Button classButton={'button'} value={'add product'} />
       </Link>
 
       <div className="content__top">
@@ -44,16 +44,39 @@ function Home() {
                 <h2>{item.name}</h2>
               </li>
               <li className="shoes-block__item description">{item.description}</li>
-              <li className="shoes-block__item">{`${(!item.aDiscount && item.price || !isBefore(new Date(dateFormatted), new Date(item.endOfDiscount)) && item.price)
-                ||
-                Math.round(item.price - (item.price * item.aDiscount) / 100)}
-                ${isBefore(new Date(dateFormatted), new Date(item.endOfDiscount)) && '  - (Скидка  '+ item.aDiscount + '%)'|| '' }
+              <li className="shoes-block__item">{`${
+                (!item.aDiscount && item.price) ||
+                (!isBefore(new Date(dateFormatted), new Date(item.endOfDiscount)) && item.price) ||
+                Math.round(item.price - (item.price * item.aDiscount) / 100)
+              }
+                ${
+                  (isBefore(new Date(dateFormatted), new Date(item.endOfDiscount)) &&
+                    '  - (Скидка  ' + item.aDiscount + '%)') ||
+                  ''
+                }
                 `}</li>
-              <li className="shoes-block__item">{`${isBefore(new Date(dateFormatted), new Date(item.endOfDiscount))&& item.aDiscount && differenceInBusinessDays(new Date(item.endOfDiscount), new Date(dateFormatted)) + ' дней, до конца скидки'||'' }`}</li>
+              <li className="shoes-block__item">{`${
+                (isBefore(new Date(dateFormatted), new Date(item.endOfDiscount)) &&
+                  item.aDiscount &&
+                  differenceInBusinessDays(new Date(item.endOfDiscount), new Date(dateFormatted)) +
+                    ' дней, до конца скидки') ||
+                ''
+              }`}</li>
               <li className="shoes-block__item">
-                <Button classButton={"button button-cart"} name={item.imageUrl} id={item.id} onClick={handleClick} value={'delete'} />
+                <Button
+                  classButton={'button button-cart'}
+                  name={item.imageUrl}
+                  id={item.id}
+                  onClick={handleClick}
+                  value={'delete'}
+                />
                 <Link to="update">
-                  <Button classButton={"button button-cart"} id={item.id} onClick={handleClickUpdate} value={'update'} />
+                  <Button
+                    classButton={'button button-cart'}
+                    id={item.id}
+                    onClick={handleClickUpdate}
+                    value={'update'}
+                  />
                 </Link>
               </li>
             </ul>
