@@ -1,0 +1,38 @@
+@import '../variables.scss';
+
+.form-block {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin: 0 auto;
+  padding: 30px 15px;
+  max-width: 50%;
+  background-color: $background;
+  border-radius: 10px;
+
+  h2{
+    margin-bottom: 20px;
+  }
+
+  &__item {
+    margin-bottom: 10px;
+  }
+
+}
+
+.form-block-auth {
+  background-color: $auth;
+  margin-bottom: 20px;
+  h2{
+    color: $gray-line;
+  }
+}
+
+.form-button-auth {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 50%;
+  background-color: $auth;
+  border-radius: 10px;
+}
